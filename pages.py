@@ -47,3 +47,9 @@ class GitHubSearchResultsPage(PageObject):
         matches = re.match(u'^Search .+$', title)
         return matches is not None
 
+    @property
+    def search_results(self):
+        """
+        Return a list of results returned from a search
+        """
+        return self.q(css='ul.repolist > li > h3.repolist-name > a').text
